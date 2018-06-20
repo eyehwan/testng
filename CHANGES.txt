@@ -1,4 +1,7 @@
 Current
+Fixed: GITHUB-1665: Failed test after rerun would impact next test case result (Yehui Wang)
+Fixed: GITHUB-1766: Testng generates a lot of temp folders like testngXmlPathInJar-***
+Fixed: GITHUB-1735: IExecutionListener.onStart() running twice when used as annotation (Krishnan Mahadevan)
 Fixed: GITHUB-1726: Allow user-defined method interceptors to have the last say in method re-ordering (Krishnan Mahadevan)
 Fixed: GITHUB-564: Support using @Optional on @Test method parameters to use null values (Krishnan Mahadevan)
 New: Upgrade TestNG to start needing at-least JDK8 (Krishnan Mahadevan)

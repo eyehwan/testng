@@ -2,7 +2,7 @@ package org.testng.internal;
 
 public class Version {
 
-    public static final String VERSION = "DEV-SNAPSHOT";
+    public static final String VERSION = "DEV-SNAPSHOT-c4cace7";
 
     public static String getVersionString() {
         return VERSION;
