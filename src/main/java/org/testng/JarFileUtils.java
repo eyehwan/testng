@@ -11,6 +11,7 @@ import org.testng.xml.internal.TestNamesMatcher;
 import org.testng.xml.internal.XmlSuiteUtils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -76,7 +77,8 @@ class JarFileUtils {
             if (Strings.isNullOrEmpty(suitePath)) {
                 return foundTestngXml;
             }
-            Collection<XmlSuite> parsedSuites = Parser.parse(suitePath, processor); 
+            Collection<XmlSuite> parsedSuites = Parser.parse(suitePath, processor);
+            delete(file);
             for (XmlSuite suite : parsedSuites) {
                 // If test names were specified, only run these test names
                 if (testNames != null) {
@@ -94,6 +96,15 @@ class JarFileUtils {
         }
         return foundTestngXml;
     }
+    
+    private void delete(File f) throws IOException {
+        if (f.isDirectory()) {
+          for (File c : f.listFiles())
+            delete(c);
+        }
+        if (!f.delete())
+          throw new FileNotFoundException("Failed to delete file: " + f);
+      }
 
     private boolean matchesXmlPathInJar(JarEntry je) {
         return je.getName().equals(xmlPathInJar);
