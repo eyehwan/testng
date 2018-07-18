@@ -28,8 +28,7 @@ public class YamlTest extends SimpleBaseTest {
   }
 
   @Test(dataProvider = "dp")
-  public void compareFiles(String name)
-      throws ParserConfigurationException, SAXException, IOException {
+  public void compareFiles(String name) throws IOException {
     Collection<XmlSuite> s1 =
         new Parser(getPathToResource("yaml" + File.separator + name + ".yaml")).parse();
     Collection<XmlSuite> s2 =

@@ -1,4 +1,8 @@
 Current
+Fixed: GITHUB-1863: IMethodInterceptor will be invoked twice when listener implements both ITestListener and IMethodInterceptor via eclipse execution way.(Bin Wu)
+Fixed: GITHUB-1865: testngXmlPathInJar- cannot be cleared when vm terminate(Yehui Wang)
+Fixed: GITHUB-1850: Parser returns a wrong structure when parent suite has duplicate child suites (Chao Qin)
+Fixed: GITHUB-1787: Method level parameters are missing when using Yaml generation utilities (Krishnan Mahadevan)
 Fixed: GITHUB-1665: Failed test after rerun would impact next test case result (Yehui Wang)
 Fixed: GITHUB-1766: Testng generates a lot of temp folders like testngXmlPathInJar-***
 Fixed: GITHUB-1735: IExecutionListener.onStart() running twice when used as annotation (Krishnan Mahadevan)

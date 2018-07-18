@@ -9,9 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.ServiceLoader;
 
 /**
@@ -135,7 +137,7 @@ public class Parser {
     /*
      * Keeps a track of parent XmlSuite for each child suite
      */
-    Map<String, XmlSuite> childToParentMap = Maps.newHashMap();
+    Map<String, Queue<XmlSuite>> childToParentMap = Maps.newHashMap();
     while (!toBeParsed.isEmpty()) {
 
       for (String currentFile : toBeParsed) {
@@ -155,7 +157,7 @@ public class Parser {
         toBeRemoved.add(currentFile);
 
         if (childToParentMap.containsKey(currentFile)) {
-           XmlSuite parentSuite = childToParentMap.get(currentFile);
+           XmlSuite parentSuite = childToParentMap.get(currentFile).remove();
            //Set parent
            currentXmlSuite.setParentSuite(parentSuite);
            //append children
@@ -179,7 +181,13 @@ public class Parser {
             }
             if (!processedSuites.contains(canonicalPath)) {
               toBeAdded.add(canonicalPath);
-              childToParentMap.put(canonicalPath, currentXmlSuite);
+              if (childToParentMap.containsKey(canonicalPath)) {
+                childToParentMap.get(canonicalPath).add(currentXmlSuite);
+              } else {
+                Queue<XmlSuite> parentQueue = new ArrayDeque<>();
+                parentQueue.add(currentXmlSuite);
+                childToParentMap.put(canonicalPath, parentQueue);
+              }
             }
           }
         }

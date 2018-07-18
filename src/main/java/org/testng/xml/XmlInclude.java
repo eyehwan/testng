@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class XmlInclude {
 
-  private final String m_name;
+  private String m_name;
   private final List<Integer> m_invocationNumbers;
   private final int m_index;
   private String m_description;

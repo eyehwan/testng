@@ -198,9 +198,11 @@ public final class Yaml {
       toYaml(result, sp2 + "    ", em);
     }
   }
-
-  private static void toYaml(StringBuilder result, String sp2, XmlInclude xi) {
-    result.append(sp2).append("- ").append(xi.getName()).append("\n");
+  
+  private static void toYaml(StringBuilder result, String sp, XmlInclude xi) {
+      result.append(sp).append("- name: ").append(xi.getName()).append("\n");
+      String sp2 = sp + "  ";
+      toYaml(result, "parameters", sp2, xi.getLocalParameters());
   }
 
   private static void toYaml(StringBuilder result, String sp, List<String> strings) {
