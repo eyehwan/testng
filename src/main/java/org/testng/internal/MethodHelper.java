@@ -203,7 +203,9 @@ public class MethodHelper {
             || configurationAnnotation.getBeforeTestMethod()
             || configurationAnnotation.getBeforeTestClass()
             || configurationAnnotation.getBeforeTest()
-            || configurationAnnotation.getBeforeSuite())
+            || configurationAnnotation.getBeforeSuite()
+            || configurationAnnotation.getBeforeGroups().length != 0
+            || configurationAnnotation.getAfterGroups().length != 0)
             && configurationAnnotation.getAlwaysRun()) {
       alwaysRun = true;
     }

@@ -16,7 +16,7 @@ public class Configuration implements IConfiguration {
   private ITestObjectFactory m_objectFactory;
   private IHookable m_hookable;
   private IConfigurable m_configurable;
-  private final Map<Class<? extends IExecutionListener>, IExecutionListener> m_executionListeners = Maps.newHashMap();
+  private final Map<Class<? extends IExecutionListener>, IExecutionListener> m_executionListeners = Maps.newLinkedHashMap();
   private final Map<Class<? extends IConfigurationListener>, IConfigurationListener> m_configurationListeners = Maps.newHashMap();
 
   public Configuration() {

@@ -1,4 +1,6 @@
 Current
+Fixed: Making testng IExecutionListener execute in fixed order.
+Fixed: GITHUB-1880: @AfterGroups(alwaysRun = true) is not called if there is an exception in @BeforeGroups (Krishnan Mahadevan)
 Fixed: GITHUB-1863: IMethodInterceptor will be invoked twice when listener implements both ITestListener and IMethodInterceptor via eclipse execution way.(Bin Wu)
 Fixed: GITHUB-1865: testngXmlPathInJar- cannot be cleared when vm terminate(Yehui Wang)
 Fixed: GITHUB-1850: Parser returns a wrong structure when parent suite has duplicate child suites (Chao Qin)
