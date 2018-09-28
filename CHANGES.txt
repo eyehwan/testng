@@ -1,4 +1,5 @@
 Current
+6.14.8
 Fixed: Making testng IExecutionListener execute in fixed order.
 Fixed: GITHUB-1880: @AfterGroups(alwaysRun = true) is not called if there is an exception in @BeforeGroups (Krishnan Mahadevan)
 Fixed: GITHUB-1863: IMethodInterceptor will be invoked twice when listener implements both ITestListener and IMethodInterceptor via eclipse execution way.(Bin Wu)
