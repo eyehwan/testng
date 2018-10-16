@@ -16,6 +16,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.ITestAnnotation;
+import org.testng.annotations.Listeners;
 import org.testng.collections.Lists;
 import org.testng.collections.Maps;
 import org.testng.collections.Sets;
@@ -1056,10 +1057,14 @@ public class TestNG {
   }
 
   private void runExecutionListeners(boolean start) {
-    for (IExecutionListener l : m_configuration.getExecutionListeners()) {
-      if (start) {
+    if (start) {
+      for (IExecutionListener l : m_configuration.getExecutionListeners()) {
         l.onExecutionStart();
-      } else {
+      }
+    }else {
+      List<IExecutionListener> executionListeners = m_configuration.getExecutionListeners();
+      Collections.reverse(executionListeners);
+      for (IExecutionListener l : executionListeners) {
         l.onExecutionFinish();
       }
     }

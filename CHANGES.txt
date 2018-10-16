@@ -1,6 +1,12 @@
 Current
+6.14.9
+Fixed: IExecutionListener.onExecutionFinish reverse order.
+Fixed: Making testng IExecutionListener execute in fixed order.(including @Listeners)
+
 6.14.8
 Fixed: Making testng IExecutionListener execute in fixed order.
+
+6.14.7
 Fixed: GITHUB-1880: @AfterGroups(alwaysRun = true) is not called if there is an exception in @BeforeGroups (Krishnan Mahadevan)
 Fixed: GITHUB-1863: IMethodInterceptor will be invoked twice when listener implements both ITestListener and IMethodInterceptor via eclipse execution way.(Bin Wu)
 Fixed: GITHUB-1865: testngXmlPathInJar- cannot be cleared when vm terminate(Yehui Wang)
