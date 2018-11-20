@@ -1,4 +1,8 @@
 Current
+
+6.14.10
+Fixed: GITHUB-1787: Method level parameters are missing when using Yaml generation utilities (Krishnan Mahadevan)
+
 6.14.9
 Fixed: IExecutionListener.onExecutionFinish reverse order.
 Fixed: Making testng IExecutionListener execute in fixed order.(including @Listeners)

@@ -17,6 +17,10 @@ public class XmlInclude {
   private final Map<String, String> m_parameters = Maps.newHashMap();
 
   private XmlClass m_xmlClass;
+  
+  public XmlInclude() {
+      this("",0);
+  }
 
   public XmlInclude(String n) {
     this(n, 0);
@@ -47,6 +51,10 @@ public class XmlInclude {
 
   public String getName() {
     return m_name;
+  }
+  
+  public void setName(String name) {
+      m_name = name;
   }
 
   public List<Integer> getInvocationNumbers() {
