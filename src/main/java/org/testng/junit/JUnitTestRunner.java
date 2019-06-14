@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -107,7 +108,13 @@ public class JUnitTestRunner implements TestListener, IJUnitTestRunner {
 
     org.testng.internal.TestResult tr= recordResults(test, tri);
 
-    TestListenerHelper.runTestListeners(tr, m_parentRunner.getTestListeners());
+    if (tr.getStatus() == ITestResult.STARTED) {
+        TestListenerHelper.runTestListeners(tr, m_parentRunner.getTestListeners()); 
+    } else {
+        List<ITestListener> test_Listeners_reverted = Lists.newArrayList(m_parentRunner.getTestListeners());
+        Collections.reverse(test_Listeners_reverted);
+        TestListenerHelper.runTestListeners(tr, test_Listeners_reverted);
+    }
   }
 
     public void setInvokedMethodListeners(Collection<IInvokedMethodListener> listeners) {

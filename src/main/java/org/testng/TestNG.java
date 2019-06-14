@@ -137,8 +137,8 @@ public class TestNG {
 
   // These listeners can be overridden from the command line
   private final Map<Class<? extends IClassListener>, IClassListener> m_classListeners = Maps.newHashMap();
-  private final Map<Class<? extends ITestListener>, ITestListener> m_testListeners = Maps.newHashMap();
-  private final Map<Class<? extends ISuiteListener>, ISuiteListener> m_suiteListeners = Maps.newHashMap();
+  private final Map<Class<? extends ITestListener>, ITestListener> m_testListeners = Maps.newLinkedHashMap();
+  private final Map<Class<? extends ISuiteListener>, ISuiteListener> m_suiteListeners = Maps.newLinkedHashMap();
   private final Map<Class<? extends IReporter>, IReporter> m_reporters = Maps.newHashMap();
   private final Map<Class<? extends IDataProviderListener>, IDataProviderListener> m_dataProviderListeners = Maps.newHashMap();
 
@@ -160,8 +160,7 @@ public class TestNG {
 
   private ITestObjectFactory m_objectFactory;
 
-  private final Map<Class<? extends IInvokedMethodListener>, IInvokedMethodListener> m_invokedMethodListeners = Maps
-      .newHashMap();
+  private final Map<Class<? extends IInvokedMethodListener>, IInvokedMethodListener> m_invokedMethodListeners = Maps.newLinkedHashMap();
 
   private Integer m_dataProviderThreadCount = null;
 

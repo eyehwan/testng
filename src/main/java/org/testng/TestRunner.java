@@ -81,7 +81,7 @@ public class TestRunner
 
   /** ITestListeners support. */
   private List<ITestListener> m_testListeners = Lists.newArrayList();
-  private Set<IConfigurationListener> m_configurationListeners = Sets.newHashSet();
+  private Set<IConfigurationListener> m_configurationListeners = Sets.newLinkedHashSet();
 
   private IConfigurationListener m_confListener= new ConfigurationListener();
 
@@ -765,14 +765,17 @@ public class TestRunner
    *                event is for finish
    */
   private void fireEvent(boolean isStart) {
-    for (ITestListener itl : m_testListeners) {
-      if (isStart) {
-        itl.onStart(this);
+      if(isStart) {
+          for (ITestListener itl : m_testListeners) {
+            itl.onStart(this);
+          }
+      } else {
+          List<ITestListener> m_testListeners_reverted = new ArrayList<>(m_testListeners);
+          Collections.reverse(m_testListeners_reverted);
+          for (ITestListener itl : m_testListeners_reverted) {
+            itl.onFinish(this);
+          }
       }
-      else {
-        itl.onFinish(this);
-      }
-    }
   }
 
   /////

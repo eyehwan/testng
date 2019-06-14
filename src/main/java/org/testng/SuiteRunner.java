@@ -43,7 +43,7 @@ public class SuiteRunner implements ISuite, IInvokedMethodListener {
 
   private Map<String, ISuiteResult> suiteResults = Collections.synchronizedMap(Maps.<String, ISuiteResult>newLinkedHashMap());
   private List<TestRunner> testRunners = Lists.newArrayList();
-  private Map<Class<? extends ISuiteListener>, ISuiteListener> listeners = Maps.newHashMap();
+  private Map<Class<? extends ISuiteListener>, ISuiteListener> listeners = Maps.newLinkedHashMap();
   private TestListenerAdapter textReporter = new TestListenerAdapter();
 
   private String outputDir;
@@ -222,7 +222,7 @@ public class SuiteRunner implements ISuite, IInvokedMethodListener {
       objectFactory = suite.getObjectFactory();
     }
     // Add our own IInvokedMethodListener
-    invokedMethodListeners = Maps.newHashMap();
+    invokedMethodListeners = Collections.synchronizedMap(Maps.newLinkedHashMap());
     if (invokedMethodListener != null) {
       for (IInvokedMethodListener listener : invokedMethodListener) {
         invokedMethodListeners.put(listener.getClass(), listener);
@@ -296,11 +296,14 @@ public class SuiteRunner implements ISuite, IInvokedMethodListener {
   }
 
   private void invokeListeners(boolean start) {
-    for (ISuiteListener sl : listeners.values()) {
-      if (start) {
-        sl.onStart(this);
+    if (start) {
+      for (ISuiteListener sl : listeners.values()) {
+        sl.onStart(this);  
       }
-      else {
+    } else {
+      List<ISuiteListener> listeners_reverted = new ArrayList<>(listeners.values());
+      Collections.reverse(listeners_reverted);
+      for (ISuiteListener sl : listeners_reverted) {
         sl.onFinish(this);
       }
     }

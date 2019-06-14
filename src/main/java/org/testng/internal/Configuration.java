@@ -17,7 +17,7 @@ public class Configuration implements IConfiguration {
   private IHookable m_hookable;
   private IConfigurable m_configurable;
   private final Map<Class<? extends IExecutionListener>, IExecutionListener> m_executionListeners = Maps.newLinkedHashMap();
-  private final Map<Class<? extends IConfigurationListener>, IConfigurationListener> m_configurationListeners = Maps.newHashMap();
+  private final Map<Class<? extends IConfigurationListener>, IConfigurationListener> m_configurationListeners = Maps.newLinkedHashMap();
 
   public Configuration() {
     init(new JDK15AnnotationFinder(new DefaultAnnotationTransformer()));

@@ -1,4 +1,6 @@
 Current
+6.14.12
+Fixed: GITHUB-2089: Make ISuiteListener, ITestListener, IInvokedMethodListener, IConfigurationListener execute in the order of insertion (Yehui Wang)
 
 6.14.11
 Fixed: GITHUB-1935: Wrong text for assertEquals (Krishnan Mahadevan)

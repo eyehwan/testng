@@ -11,7 +11,7 @@ import org.testng.TestNGException;
 import org.testng.annotations.IListenersAnnotation;
 import org.testng.collections.Lists;
 import org.testng.internal.annotations.IAnnotationFinder;
-
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +31,9 @@ public final class TestListenerHelper {
     }
 
     static void runPostConfigurationListeners(ITestResult tr, List<IConfigurationListener> listeners) {
-        for (IConfigurationListener icl : listeners) {
+        List<IConfigurationListener> listeners_reverted = Lists.newArrayList(listeners);
+        Collections.reverse(listeners_reverted);        
+        for (IConfigurationListener icl : listeners_reverted) {
             switch (tr.getStatus()) {
                 case ITestResult.SKIP:
                     icl.onConfigurationSkip(tr);
