@@ -886,5 +886,10 @@
     </classes>
   </test>
 
+ <test name="TestContextTest">
+    <classes>
+      <class name="test.Testcontext.TestContextInListenerTest"/>
+    </classes>
+  </test>
 </suite>
 
