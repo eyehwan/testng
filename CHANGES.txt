@@ -1,7 +1,4 @@
 Current
-6.14.13
-Fixed: GITHUB-2282 testResult.getTestContext() return null when @BeforeMethod failed(Dianny Chen)
-
 6.14.12
 Fixed: GITHUB-2089: Make ISuiteListener, ITestListener, IInvokedMethodListener, IConfigurationListener execute in the order of insertion (Yehui Wang)
 
