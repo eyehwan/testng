@@ -489,6 +489,7 @@ public class Invoker implements IInvoker {
     if (noListenersPresent()) {
       return;
     }
+
     InvokedMethodListenerInvoker invoker = new InvokedMethodListenerInvoker(listenerMethod, testResult, m_testContext);
 //    for (IInvokedMethodListener currentListener : m_invokedMethodListeners) {
 //      invoker.invokeListener(currentListener, invokedMethod);
@@ -535,15 +536,15 @@ public class Invoker implements IInvoker {
     invokeConfigurations(testClass, tm, setupConfigMethods, suite, params, parameterValues, instance, testResult);
 
     InvokedMethod invokedMethod = new InvokedMethod(instance, tm, System.currentTimeMillis(), testResult);
+
     if (!confInvocationPassed(tm, tm, testClass, instance)) {
       Throwable exception = ExceptionUtils.getExceptionDetails(m_testContext, instance);
       ITestResult result = registerSkippedTestResult(tm, instance, System.currentTimeMillis(), exception);
-
       m_notifier.addSkippedTest(tm, result);
       tm.incrementCurrentInvocationCount();
       testResult.setMethod(tm);
-            runInvokedMethodListeners(BEFORE_INVOCATION, invokedMethod, result);
-            runInvokedMethodListeners(AFTER_INVOCATION, invokedMethod, result);
+      runInvokedMethodListeners(BEFORE_INVOCATION, invokedMethod, testResult);
+      runInvokedMethodListeners(AFTER_INVOCATION, invokedMethod, testResult);
       ITestNGMethod[] teardownConfigMethods = TestNgMethodUtils.filterLastTimeRunnableTeardownConfigurationMethods(tm, afterMethods);
       invokeConfigurations(testClass, tm, teardownConfigMethods, suite, params, parameterValues, instance, testResult);
       invokeAfterGroupsConfigurations(tm, groupMethods, suite, params, instance);
