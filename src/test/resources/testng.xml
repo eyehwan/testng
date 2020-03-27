@@ -886,5 +886,10 @@
     </classes>
   </test>
 
+<test name="TestContest">
+    <classes>
+      <class name="test.testcontext.TestContestInListenerTest"/>
+    </classes>
+  </test>
 </suite>
 
