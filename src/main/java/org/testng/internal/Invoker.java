@@ -543,8 +543,8 @@ public class Invoker implements IInvoker {
       m_notifier.addSkippedTest(tm, result);
       tm.incrementCurrentInvocationCount();
       testResult.setMethod(tm);
-      runInvokedMethodListeners(BEFORE_INVOCATION, invokedMethod, testResult);
-      runInvokedMethodListeners(AFTER_INVOCATION, invokedMethod, testResult);
+            runInvokedMethodListeners(BEFORE_INVOCATION, invokedMethod, result);
+            runInvokedMethodListeners(AFTER_INVOCATION, invokedMethod, result);
       ITestNGMethod[] teardownConfigMethods = TestNgMethodUtils.filterLastTimeRunnableTeardownConfigurationMethods(tm, afterMethods);
       invokeConfigurations(testClass, tm, teardownConfigMethods, suite, params, parameterValues, instance, testResult);
       invokeAfterGroupsConfigurations(tm, groupMethods, suite, params, instance);
