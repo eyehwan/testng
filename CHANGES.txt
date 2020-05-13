@@ -1,4 +1,7 @@
 Current
+6.14.14
+Fixed get parent suite name before suite starts.
+
 6.14.13
 Fixed GITHUB-2282 testResult.getTestContext() return null when @BeforeMethod failed (Dianny Chen)
 
