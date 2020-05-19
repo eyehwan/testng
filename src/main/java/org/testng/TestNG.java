@@ -182,6 +182,7 @@ public class TestNG {
   private boolean isSuiteInitialized = false;
   private org.testng.internal.ExitCodeListener exitCodeListener;
   private ExitCode exitCode;
+  public static Collection<XmlSuite> allSuites;
 
   /**
    * Default constructor. Setting also usage of default listeners/reporters.
@@ -292,7 +293,7 @@ public class TestNG {
       LOGGER.debug("suiteXmlPath: \"" + suitePath + "\"");
     }
     try {
-      Collection<XmlSuite> allSuites = Parser.parse(suitePath, getProcessor());
+      allSuites = Parser.parse(suitePath, getProcessor());
 
       for (XmlSuite s : allSuites) {
         if (this.m_parallelMode != null) {
@@ -1980,6 +1981,13 @@ public class TestNG {
     return Lists.newArrayList(serviceLoaderListeners.values());
   }
 
+  public String getSuiteName() {
+     String suitename = null;
+     for (XmlSuite s : allSuites) {
+         suitename = s.getName();
+     }
+     return suitename;
+  }
   //
   // ServiceLoader testing
   /////
