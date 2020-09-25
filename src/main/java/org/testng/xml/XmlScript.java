@@ -1,27 +1,23 @@
 package org.testng.xml;
 
-import org.testng.xml.dom.TagContent;
-
-
 public class XmlScript {
 
-  private String m_language;
-  private String m_script;
+    private String language;
+    private String expression;
 
   public void setLanguage(String language) {
-    m_language = language;
+      this.language = language;
   }
 
-  @TagContent(name = "script")
-  public void setScript(String script) {
-    m_script = script;
+  public void setExpression(String expression) {
+      this.expression = expression;
   }
 
-  public String getScript() {
-    return m_script;
+  public String getExpression() {
+      return expression;
   }
 
   public String getLanguage() {
-    return m_language;
+      return language;
   }
 }

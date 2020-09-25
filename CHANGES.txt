@@ -1,4 +1,8 @@
 Current
+6.14.15
+Fixed: GITHUB-2193: Ignore local url for DTD security check (Li.Zhao & Julien Herr)
+Fixed: GITHUB-2022: Suite.xml files make web request when suite uses DTD over HTTPS (Krishnan Mahadevan)
+
 6.14.14
 Fixed get parent suite name before suite starts.
 
